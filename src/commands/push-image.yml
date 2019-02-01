@@ -2,7 +2,7 @@ description: "Push a container image to the Amazon ECR registry"
 
 parameters:
   account-url:
-    type: env_var_name
+    type: string
     description: >
       Env var storing Amazon ECR account URL that maps to an AWS account,
       e.g. {awsAccountNum}.dkr-ecr.us-west-2.amazonaws.com
@@ -21,4 +21,4 @@ parameters:
 steps:
   - run:
       name: Push image to Amazon ECR
-      command: "docker push $<< parameters.account-url >>/<< parameters.repo >>:<< parameters.tag >>"
+      command: "docker push << parameters.account-url >>/<< parameters.repo >>:<< parameters.tag >>"
